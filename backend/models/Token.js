@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const TokenSchema = new mongoose.Schema(
   {
+    // TODO re
     refreshToken:{ type: String, require: true },
     ip:{ type:String, required:true },
     userAgent:{ type:String, required: true },
@@ -13,6 +14,7 @@ const TokenSchema = new mongoose.Schema(
     }
   },
   {
+    // Mongoose 会自动为 document 添加 createdAt 和 updatedAt 字段。
     timestamps: true
   }
 )

@@ -16,12 +16,12 @@ const mongoSanitize = require('express-mongo-sanitize');
 // 数据库
 const connectDB = require("./db/connect");
 
-
 // 路由
 const authRouter = require("./routes/authRoutes")
 
 // middleware
 const notFoundMiddleware = require('./middleware/not-found');
+const errorHandlerMiddleware = require('./middleware/error-handler');
 
 app.set('trust proxy', 1);
 app.use(
@@ -44,6 +44,7 @@ app.use(express.static('./public'));
 app.use('/api/v1/auth', authRouter);
 
 app.use(notFoundMiddleware);
+app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 5000;
 const start = async () => {
