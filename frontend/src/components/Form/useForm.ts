@@ -15,6 +15,19 @@ class FormSotre{
     return this.store[name];
   }
 
+  validateField = ()=> {
+    const err:any[] = [];
+    this.fieldEntities.forEach((entity) => {
+      const { name, rules } = entity.props;
+      const value:NamePath = !!name && this.getFieldValue(name);
+      let rule = rules?.length && rules[0];
+      if(rule && rule.required && (value == undefined || value == "")){
+        name && err.push({ [name]: rule && rule.message, value });
+      }
+    })
+    return err;
+  }
+
   setFieldsValue = (newStore:Store) => {
     this.store = {
       ...this.store,
@@ -44,9 +57,12 @@ class FormSotre{
   }
 
   submit = () => {
-    const { onFinish } = this.callbacks;
-    if(onFinish){
-      onFinish(this.getFieldsValue());
+    const { onFinish, onFinishFailed } = this.callbacks;
+    const err = this.validateField();
+    if(err.length === 0){
+      onFinish && onFinish(this.getFieldsValue());
+    } else {
+      onFinishFailed && onFinishFailed(err);
     }
   }
 
