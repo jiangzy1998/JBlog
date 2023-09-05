@@ -20,6 +20,10 @@ export default defineConfig({
       localsConvention: 'camelCase'
     },
     preprocessorOptions: {
+      less: {
+        math: "always",
+        javascriptEnabled: true, // 启用内联 JavaScript
+      },
     }
   }
 })

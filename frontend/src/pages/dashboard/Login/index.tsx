@@ -1,4 +1,5 @@
 import Form, { Field, useForm } from "@/components/Form";
+import Input from "@/components/Input";
 import { useEffect } from "react";
 
 const emailRules = { required: true, message: "请输入邮箱！" };
@@ -50,13 +51,13 @@ const Login: React.FC = () => {
       form={form}
     >
       <Field name={"email"} rules={[emailRules]}>
-        <input placeholder="邮箱" />
+        <Input placeholder="邮箱" />
       </Field>
       <Field name={"name"} rules={[nameRules]}>
-        <input placeholder="用户名" />
+        <Input placeholder="用户名" />
       </Field>
       <Field name={"password"} rules={[passworRules]}>
-        <input placeholder="密码" type="password" />
+        <Input placeholder="密码" />
       </Field>
       <button type="submit">提交</button>
     </Form>

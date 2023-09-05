@@ -1,5 +1,6 @@
 const { StatusCodes } = require('http-status-codes');
-const { sendVerificationEmail, attachCookiesToResponse } = require('../utils/jwt');
+const attachCookiesToResponse = require('../utils/jwt');
+const sendVerificationEmail = require("../utils/sendVerficationEmail");
 const CustomError = require('../errors');
 const User = require('../models/User')
 
@@ -21,7 +22,7 @@ const register = async (req, res) => {
   const verificationToken = crypto.randomBytes(40).toString('hex');
   
 
-  const user = await User.create({
+  await User.create({
     name,
     email,
     password,
@@ -29,17 +30,25 @@ const register = async (req, res) => {
     verificationToken
   })
 
-  const origin = "http://localhost:4000";
+  // 目前暂不不校验邮箱
+  const user = await User.findOne({ email });
+  (user.isVerified = true), (user.verified = Date.now());
+  user.verificationToken = '';
+  await user.save();
+  // const origin = process.env.SEND_EMAIL_ORIGIN
 
-  await sendVerificationEmail({
-    name: user.name,
-    email: user.email,
-    verificationToken: user.verificationToken,
-    origin
-  })
-
+  // await sendVerificationEmail({
+  //   name: user.name,
+  //   email: user.email,
+  //   verificationToken: user.verificationToken,
+  //   origin
+  // })
+  
+  // res.status(StatusCodes.CREATED).json({
+  //   msg: 'Success! Please check your email to verify account',
+  // })
   res.status(StatusCodes.CREATED).json({
-    msg: 'Success! Please check your email to verify account',
+    msg: '新建用户成功！',
   })
 }
 
