@@ -2,7 +2,6 @@
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: @line-height-base;
   font-size: @font-size-sm;
   font-weight: 400;
 
@@ -22,12 +21,12 @@
   margin: 0;
 }
 
-body {
+body, main {
   margin: 0;
-  display: flex;
   place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  height: 100vh;
+  width: 100vm;
+  background-color: @normal-color;
 }
 
 .jzy-horizontal{

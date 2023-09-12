@@ -1,5 +1,6 @@
+import Home from "@/pages/blog/Home";
 import Dashboard from "@/pages/dashboard";
-import { Route, Routes } from "react-router-dom"
+import { Navigate, Route, Routes } from "react-router-dom"
 import ErrorBoundary from "../ErrorBoundary"
 
 const Main:React.FC = () => {
@@ -7,7 +8,9 @@ const Main:React.FC = () => {
     <main>
       <ErrorBoundary>
         <Routes>
-          <Route path='/dashboard/*' element={<Dashboard />}></Route>
+          <Route path='/' element={<Home />}></Route>
+          <Route path='dashboard/*' element={<Dashboard />}></Route>
+          <Route path='*' element={<Navigate to='/' replace />} />
         </Routes>
       </ErrorBoundary>
     </main>
