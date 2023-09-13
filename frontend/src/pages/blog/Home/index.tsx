@@ -1,3 +1,4 @@
+import ArtList from "../Articles/ArtList";
 import "./index.less"
 
 const Home:React.FC = () => {
@@ -8,7 +9,7 @@ const Home:React.FC = () => {
       </div>
 
       <div className="artCotent">
-        2
+        <ArtList></ArtList>
       </div>
     </div>
   )

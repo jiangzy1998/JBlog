@@ -18,6 +18,7 @@ const connectDB = require("./db/connect");
 
 // 路由
 const authRouter = require("./routes/authRoutes")
+const articleRouter = require("./routes/articleRoutes")
 
 // middleware
 const notFoundMiddleware = require('./middleware/not-found');
@@ -45,6 +46,7 @@ app.use(cookieParser(process.env.JWT_SECRET));
 app.use(express.static('./public'));
 
 app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/article', articleRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
