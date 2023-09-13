@@ -1,9 +1,11 @@
 import Form, { Field, useForm } from "@/components/Form";
 import Input from "@/components/Input";
+import { fetchAPI } from "@/utils/apis/fetch";
 import { useEffect } from "react";
 
 const emailRules = { required: true, message: "请输入邮箱！" };
 const passworRules = { required: true, message: "请输入密码！" };
+//TODO csrf
 
 const Login: React.FC = () => {
 
@@ -13,29 +15,14 @@ const Login: React.FC = () => {
     form.setFieldsValue({ email: 'default' });
   }, []);
 
-  const onFormFinish = (values: any) => {
+  const onFormFinish = async (values: any) => {
     console.log(values.email);
     const bodyValue = {
       email:values.email,
       password:values.password
     }
-    fetch("http://127.0.0.1:4000/api/v1/auth/login", {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(bodyValue)
-    }).then(
-      (response) => {
-        return response.json();
-      }
-    )
-    .then((data) => {
-      console.log(data);
-    })
-    .catch(() => {
-
-    })
+    const data = await fetchAPI("auth/login", 'POST', bodyValue)
+    console.log(data);
   }
 
   return (

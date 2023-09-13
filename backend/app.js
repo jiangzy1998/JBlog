@@ -18,6 +18,7 @@ const connectDB = require("./db/connect");
 
 // 路由
 const authRouter = require("./routes/authRoutes")
+const articleRouter = require("./routes/articleRoutes")
 
 // middleware
 const notFoundMiddleware = require('./middleware/not-found');
@@ -32,7 +33,10 @@ app.use(
 );
 
 app.use(helmet());
-app.use(cors());
+app.use(cors({
+  origin: 'http://127.0.0.1:5173', // 允许前端应用的域名
+  credentials: true, // 允许发送跨域 Cookie
+}));
 app.use(xss());
 app.use(mongoSanitize());
 
@@ -42,6 +46,7 @@ app.use(cookieParser(process.env.JWT_SECRET));
 app.use(express.static('./public'));
 
 app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/article', articleRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
