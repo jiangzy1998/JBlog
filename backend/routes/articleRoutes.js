@@ -1,11 +1,15 @@
 const express = require("express");
-const router = express.router();
+const router = express.Router();
 
-const { getAllArticles } = require("../controllers/articleController")
+const { 
+  getAllArticles,
+  createArticle
+} = require("../controllers/articleController")
 
 router
-  .router('/')
-  .get(getAllArticles);
+  .route('/')
+  .get(getAllArticles)
+  .post(createArticle)
 
 
 module.exports = router;

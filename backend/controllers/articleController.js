@@ -22,6 +22,13 @@ const getAllArticles = async (req, res) => {
   )
 } 
 
+const createArticle = async (req, res) => {
+  // TODO 需要做校验，目前先进行接口测试
+  const article = await Article.create(req.body);
+  res.status(StatusCodes.CREATED).json({ data:article });
+}
+
 module.exports = {
-  getAllArticles
+  getAllArticles,
+  createArticle
 }

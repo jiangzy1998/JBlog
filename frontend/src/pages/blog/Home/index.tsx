@@ -1,3 +1,4 @@
+import Pagination from "@/components/Pagination";
 import ArtList from "../Articles/ArtList";
 import "./index.less"
 
@@ -9,7 +10,10 @@ const Home:React.FC = () => {
       </div>
 
       <div className="artCotent">
-        <ArtList></ArtList>
+        <div className="content-wrapper">
+          <ArtList></ArtList>
+          <Pagination total={5} current={1}></Pagination>
+        </div>
       </div>
     </div>
   )
