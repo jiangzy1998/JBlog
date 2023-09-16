@@ -1,6 +1,8 @@
 import Pagination from "@/components/Pagination";
 import ArtList from "../Articles/ArtList";
 import "./index.less"
+import { Route, Routes } from "react-router-dom";
+import ArtDetail from "../ArtDetail";
 
 const Home:React.FC = () => {
   return (
@@ -10,9 +12,12 @@ const Home:React.FC = () => {
       </div>
 
       <div className="artCotent">
+        
         <div className="content-wrapper">
-          <ArtList></ArtList>
-          <Pagination total={5} current={1}></Pagination>
+          <Routes>
+            <Route path="/" element={<ArtList/>  }/>
+            <Route path="/:id" element={<ArtDetail/>  }/>
+          </Routes>
         </div>
       </div>
     </div>

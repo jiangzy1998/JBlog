@@ -1,9 +1,14 @@
 import ArtCard from "@/components/ArtCard";
+import Pagination from "@/components/Pagination";
 
 
 const ArtList:React.FC = () => {
   return (
-    <ArtCard></ArtCard>
+    <section>
+      <ArtCard></ArtCard>
+      <Pagination total={5} current={1}></Pagination>
+    </section>
+    
   )
 }
 
