@@ -2,6 +2,7 @@ import ArtCard, { ArtCardProps } from "@/components/ArtCard";
 import Pagination from "@/components/Pagination";
 import { fetchAPI } from "@/utils/apis/fetch";
 import { useEffect, useState } from "react";
+import "./index.less"
 
 
 const ArtList:React.FC = () => {
@@ -33,14 +34,15 @@ const ArtList:React.FC = () => {
   }, [])
 
   return (
-    <section>
-      { articles.map((item, index) => (
-        <ArtCard key={index} title={item.title} excerpt={item.excerpt} articleID={0}></ArtCard>
-      ))}
+    <div className="articles">
+      <div >
+        { articles.map((item, index) => (
+          <ArtCard key={index} title={item.title} excerpt={item.excerpt} articleID={0}></ArtCard>
+        ))}
+      </div>
       
       <Pagination total={5} current={1}></Pagination>
-    </section>
-    
+    </div>
   )
 }
 
