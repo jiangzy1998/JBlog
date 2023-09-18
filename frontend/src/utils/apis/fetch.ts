@@ -15,8 +15,8 @@ export type Method =
   | 'unlink' | 'UNLINK';
 
 
-export const fetchAPI = async (url: string, method: Method, params: object) => {
-  const hostURL = fetchAPI + fetchAPIV1;
+export const  fetchAPI = async (url: string, method: Method, params: object) => {
+  const hostURL = fetchAPIURL + fetchAPIV1;
   const requestInit:RequestInit = {
     method: method,
     headers: {
@@ -25,7 +25,7 @@ export const fetchAPI = async (url: string, method: Method, params: object) => {
     credentials: 'include',
     body: JSON.stringify(params)
   }
-  return await fetch(hostURL + url, requestInit)
+  return fetch(hostURL + url, requestInit)
     .then((res) => res.json())
     .catch(() => false);
 }

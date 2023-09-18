@@ -8,9 +8,9 @@ const Main:React.FC = () => {
     <main>
       <ErrorBoundary>
         <Routes>
-          <Route path='/' element={<Home />}></Route>
-          <Route path='dashboard/*' element={<Dashboard />}></Route>
-          <Route path='*' element={<Navigate to='/' replace />} />
+          <Route path='/blog/*' element={<Home />}></Route>
+          <Route path='/dashboard/*' element={<Dashboard />}></Route>
+          <Route path='*' element={<Navigate to='/blog' replace />} />
         </Routes>
       </ErrorBoundary>
     </main>
