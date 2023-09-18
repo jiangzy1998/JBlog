@@ -7,10 +7,10 @@ import './index.less'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <AppProvider>
+    {/* <AppProvider> */}
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </AppProvider>
+    {/* </AppProvider> */}
   </React.StrictMode>,
 )

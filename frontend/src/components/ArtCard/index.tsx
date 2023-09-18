@@ -1,13 +1,25 @@
 import { useNavigate } from "react-router-dom"
 import "./index.less"
 
-const ArtCard:React.FC = () => {
+export interface ArtCardProps {
+  title:string,
+  excerpt:string,
+  articleID:number
+}
+
+const ArtCard:React.FC<ArtCardProps> = ({
+  title,
+  excerpt,
+  articleID
+}) => {
 
   const navigate = useNavigate()
 
+  // 跳转到文章详情
   const navToDetail = () => {
-    navigate("/blog/1")
+    navigate("/blog/" + articleID);
   }
+  
   return (
     <div className="article-card" onClick={ () => navToDetail()}>
       <h2>Deploy on multiple env with GitHub Actions</h2>
