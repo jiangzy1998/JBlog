@@ -1,4 +1,5 @@
 // 封装自定义 featch 请求
+import { json } from "react-router-dom";
 import { fetchAPIURL, fetchAPIV1 } from "../constant";
 
 
@@ -15,7 +16,7 @@ export type Method =
   | 'unlink' | 'UNLINK';
 
 
-export const  fetchAPI = async (url: string, method: Method, params: object) => {
+export const fetchAPI = async (url: string, method: Method, params: object) => {
   const hostURL = fetchAPIURL + fetchAPIV1;
   const requestInit:RequestInit = {
     method: method,
@@ -23,9 +24,11 @@ export const  fetchAPI = async (url: string, method: Method, params: object) => 
       'Content-Type': 'application/json'
     },
     credentials: 'include',
-    body: JSON.stringify(params)
+  }
+  if(method == 'POST' || method == "post"){
+    requestInit["body"] = JSON.stringify(params);
   }
   return fetch(hostURL + url, requestInit)
     .then((res) => res.json())
-    .catch(() => false);
+    .catch((err) => console.error(err));
 }

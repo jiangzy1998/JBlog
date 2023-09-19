@@ -4,16 +4,17 @@ const CustomError = require('../errors');
 const path = require('path');
 
 // 获取所有的文章
-// page size
+// page 从 1 开始
+// size 默认为 10
 const getAllArticles = async (req, res) => {
   let { page, size } = req.param;
   if(!page){
-    page = 0;
+    page = 1;
   }
   if(!size){
     size = 10;
   }
-  const articles = await Article.find({}).sort({updatedAt:-1}).skip(size * page ).limit(size);
+  const articles = await Article.find({}).sort({updatedAt:-1}).skip(size * ( page - 1 ) ).limit(size);
   res.status(StatusCodes.OK).json(
     {
       data:articles,
