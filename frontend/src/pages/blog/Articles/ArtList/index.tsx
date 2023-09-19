@@ -11,11 +11,15 @@ const ArtList:React.FC = () => {
 
   // 获取文章列表
   // TODO 需要分页
-  const fetchBlogs = async () => {
-    const { data } = await fetchAPI("/article", 'GET', { page: 0, size: 10});
+  const fetchBlogs = async ( page:number = 1, size:number = 10 ) => {
+    const { data } = await fetchAPI(`/article?page=${page}&size=${size}`, 'GET', {});
     if(!!data){
       setArticles(data);
     }
+  }
+
+  const paginationChange = (page:number) => {
+    fetchBlogs(page);
   }
 
   // const addBlog = async () => {
@@ -30,18 +34,18 @@ const ArtList:React.FC = () => {
   // }
 
   useEffect(()=>{
-    fetchBlogs();
+    fetchBlogs(1);
   }, [])
 
   return (
     <div className="articles">
       <div >
         { articles.map((item, index) => (
-          <ArtCard key={index} title={item.title} excerpt={item.excerpt} articleID={0}></ArtCard>
+          <ArtCard key={index} title={item.title} excerpt={item.excerpt} updateAt={item.updateAt} articleID={0}></ArtCard>
         ))}
       </div>
       
-      <Pagination total={5} current={1}></Pagination>
+      <Pagination total={5} current={1} onChange={paginationChange}></Pagination>
     </div>
   )
 }

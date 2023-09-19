@@ -30,5 +30,5 @@ export const fetchAPI = async (url: string, method: Method, params: object) => {
   }
   return fetch(hostURL + url, requestInit)
     .then((res) => res.json())
-    .catch(() => false);
+    .catch((err) => console.error(err));
 }
