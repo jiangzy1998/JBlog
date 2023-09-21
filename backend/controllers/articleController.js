@@ -13,7 +13,7 @@ const createArticle = async (req, res) => {
 // page 从 1 开始
 // size 默认为 10
 const getAllArticles = async (req, res) => {
-  let { page, size } = req.param;
+  let { page, size } = req.params;
   if(!page){
     page = 1;
   }
@@ -33,12 +33,12 @@ const getAllArticles = async (req, res) => {
 
 // 根据获取文章详情
 const getArticleById = async (req, res) => {
-  let { id } = req.param;
+  let { id } = req.params;
   const articleID = Number.parseInt(id);
   if(isNaN(articleID)){
     res.status(StatusCodes.BAD_REQUEST).json({data:"", msg:'参数格式错误！'})
   }
-  const article = await Article.find({articleID:articleID});
+  const article = await Article.find({articleID:articleID}).limit(1);
   res.status(StatusCodes.OK).json({data:article})
 }
 
