@@ -42,7 +42,7 @@ const ArtList:React.FC = () => {
     <div className="articles">
       <div >
         { articles.map((item, index) => (
-          <ArtCard key={index} title={item.title} excerpt={item.excerpt} updateAt={item.updateAt} articleID={0}></ArtCard>
+          <ArtCard key={index} title={item.title} excerpt={item.excerpt} updateAt={item.updateAt} articleID={item.articleID}></ArtCard>
         ))}
       </div>
       
