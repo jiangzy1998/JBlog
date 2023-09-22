@@ -8,12 +8,12 @@ export interface PaginationProps {
 
 const Pagination: React.FC<PaginationProps> = ({
   total,
-  current = 1,
+  current,
   onChange
 }) => {
   const items = Array.from({ length: total  }, (_, index) => index);
 
-  const [ currentPage, setCurrentPage ] = useState(current || 1);
+  const [ currentPage, setCurrentPage ] = useState(current);
 
   // 点击下方翻页器数字触发
   const handleClick = (index:number) => {
@@ -28,7 +28,10 @@ const Pagination: React.FC<PaginationProps> = ({
   }
 
   useEffect(()=>{
-    !!onChange && onChange(currentPage);
+    console.log(currentPage);
+    if(!!currentPage){
+      !!onChange && onChange(currentPage);
+    }
   }, [currentPage])
 
   return (

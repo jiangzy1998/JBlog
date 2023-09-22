@@ -20,9 +20,11 @@ export const fetchAPI = async (url: string, method: Method, params: object) => {
   const hostURL = fetchAPIURL + fetchAPIV1;
   const requestInit:RequestInit = {
     method: method,
+    redirect: 'follow',
     headers: {
       'Content-Type': 'application/json'
     },
+    mode:'cors',
     credentials: 'include',
   }
   if(method == 'POST' || method == "post"){

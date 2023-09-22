@@ -17,8 +17,9 @@ const ArtList:React.FC = () => {
       setArticles(data);
     }
   }
-
+  
   const paginationChange = (page:number) => {
+    console.log("paginationChange", page)
     fetchBlogs(page);
   }
 
@@ -33,9 +34,9 @@ const ArtList:React.FC = () => {
   //   console.log(data);
   // }
 
-  useEffect(()=>{
-    fetchBlogs(1);
-  }, [])
+  // useEffect(()=>{
+  //   fetchBlogs(1);
+  // }, [])
 
   return (
     <div className="articles">
