@@ -1,5 +1,7 @@
 require('dotenv').config();
 require('express-async-errors');
+const fs = require('fs');
+const path = require('path');
 
 const express = require('express');
 const app = express();
@@ -24,13 +26,13 @@ const articleRouter = require("./routes/articleRoutes")
 const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
 
+// 创建一个可写流，将日志写入到文件中
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
+
+// 使用 Morgan 中间件来记录日志
+app.use(morgan('combined', { stream: accessLogStream }));
+
 app.set('trust proxy', 1);
-app.use(
-  rateLimiter({
-    windowMs: 15 * 60 * 1000,
-    max: 60,
-  })
-);
 
 app.use(helmet());
 app.use(cors({
@@ -51,7 +53,7 @@ app.use('/api/v1/article', articleRouter);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 4000;
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URL);

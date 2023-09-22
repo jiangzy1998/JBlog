@@ -7,9 +7,9 @@ const Home:React.FC = () => {
   return (
     <div className="home">
       {/* 个人信息区域 */}
-      <div className="userInfo">
+      {/* <div className="userInfo">
       
-      </div>
+      </div> */}
 
       {/* 博客区域 */}
       <div className="artCotent">
