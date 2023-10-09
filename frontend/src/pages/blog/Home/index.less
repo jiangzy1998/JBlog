@@ -1,3 +1,5 @@
+@import "../../../components/style/default.less";
+
 .home {
   display: flex;
   flex-direction: row;
@@ -13,15 +15,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    padding-top: 30vh;
 
     .logo{
       border-radius: 50%;
       display: inline-block;
       border: 1px solid gray;
       overflow: hidden;
-      width: 100px;
-      height: 100px;
+      width: 110px;
+      height: 110px;
+      cursor: pointer;
     }
   }
 
@@ -39,9 +42,32 @@
       max-width: 850px;
       height:100%;
     }
+  }
 
+  .typing{
+    width: 13em;
+    white-space: nowrap;
+    border-right: 2px solid transparent;
+    animation: typing 3.5s steps(15, end), blink-caret .75s step-end 5;
+    overflow: hidden;
+    margin-top: @margin-lg;
+    font-size: @font-size-lg;
+    color: @white;
+    font-weight: 600;
   }
 }
+
+/* 打印效果 */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 13em; }
+}
+/* 光标闪啊闪 */
+@keyframes blink-caret {
+  from, to { box-shadow: 1px 0 0 0 transparent; }
+  50% { box-shadow: 1px 0 0 0; }
+}
+
 
 @media screen and (max-width: 960px) {
   .home {
@@ -53,6 +79,14 @@
       height: 300px;
       max-height: 300px;
       min-height: 300px;
+      align-items: center;
+      justify-content: center;
+      padding-top: 0%;
+    }
+
+    .typeing{
+      margin-top: @margin-md;
+      font-size: @font-size-base;
     }
   }
 }

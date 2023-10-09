@@ -1,17 +1,22 @@
 import ArtList from "../Articles/ArtList";
 import "./index.less"
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import ArtDetail from "../ArtDetail";
 import logo from "@/assets/logo.jpg"
 
 const Home:React.FC = () => {
+
+  const navigate = useNavigate()
+
   return (
     <div className="home">
       {/* 个人信息区域 */}
       <div className="userInfo">
         <div className="logo">
-          <img  src={logo} width="102" height="102"></img>
+          <img alt="前往首页" src={logo} width="112" height="112" onClick={() => navigate('/blog')}></img>
         </div>
+
+        <p className="typing">我是阿酱，一名前端开发者。</p>
         
       </div>
 
