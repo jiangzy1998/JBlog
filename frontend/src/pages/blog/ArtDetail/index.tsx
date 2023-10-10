@@ -1,6 +1,7 @@
 import { fetchAPI } from "@/utils/apis/fetch";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import "quill/dist/quill.core.css";
 
 const ArtDetail:React.FC = () => {
 
@@ -26,7 +27,8 @@ const ArtDetail:React.FC = () => {
   return (
     <section>
       <Link to='/blog'>Back</Link>
-      <span>{ !!article && article.article }</span>
+      
+      <div className="ql-editor" dangerouslySetInnerHTML={{ __html: '<p>normal</p><p><strong>bold</strong></p><p><strong><em>line</em></strong></p><p><strong style="color: rgb(230, 0, 0);"><em>red</em></strong></p><h1>h1h1</h1>' }} />
     </section>
     
   )

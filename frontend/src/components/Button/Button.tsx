@@ -19,12 +19,13 @@ export interface ButtonProps extends MergedHTMLAttributes{
 const Button:React.FC<ButtonProps> = ({
   type = 'default',
   children,
+  onClick
 })=>{
 
   const prefixCls = "jzy";
 
   return (
-    <button className={`${prefixCls}-btn ${prefixCls}-btn-${type}`}>
+    <button className={`${prefixCls}-btn ${prefixCls}-btn-${type}`} onClick={onClick}>
       <span>
         { children }
       </span>

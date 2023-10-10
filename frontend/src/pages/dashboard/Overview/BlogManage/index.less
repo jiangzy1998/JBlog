@@ -1,5 +1,7 @@
 @import "../../../../components/style/default.less";
 
+
+@quill-toolbar-border: rgba(0,0,0,0.05);
 .blog-editor{
   height:100%;
   background-color: @white;
@@ -10,5 +12,20 @@
     height:48px;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+
+    input{
+      border: 0;
+    }
   }
+
+  // 修改 quill 编辑器样式
+  .ql-toolbar.ql-snow{
+    border-bottom: 1px solid @quill-toolbar-border;
+    border-top: 1px solid @quill-toolbar-border;
+  }
+  
 }
+

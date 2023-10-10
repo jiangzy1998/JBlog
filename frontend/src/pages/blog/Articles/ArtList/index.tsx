@@ -14,6 +14,9 @@ const ArtList:React.FC = () => {
   const fetchBlogs = async ( page:number = 1, size:number = 10 ) => {
     const { data } = await fetchAPI(`/article?page=${page}&size=${size}`, 'GET', {});
     if(!!data){
+      data.forEach((item:any) => {
+        item.articleID = item._id
+      });
       setArticles(data);
     }
   }
