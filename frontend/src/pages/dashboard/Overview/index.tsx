@@ -1,6 +1,14 @@
+import { Route, Routes } from "react-router-dom";
+import BlogManage from "./BlogManage";
+
 const Overview:React.FC = () => {
   return (
-    <h1>123</h1>
+    <>
+      <Routes>
+        <Route path="/" element={<BlogManage/>  }/>
+      </Routes>
+    </>
+    
   )
 }
 

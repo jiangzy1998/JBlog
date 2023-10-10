@@ -1,0 +1,24 @@
+@import "../../style/default.less";
+
+@btn-prefix-cls: ~'@{jzy-prefix}-btn';
+
+
+.@{btn-prefix-cls} {
+  font-size: @btn-font-size-sm;
+  height: @btn-height-base;
+  font-weight: @btn-font-weight;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: @btn-padding-horizontal-base;
+  padding-right: @btn-padding-horizontal-base;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: @btn-border-radius-base;
+  user-select: none;
+
+  &-primary{
+    color:@white;
+    background-color: @blue-6
+  }
+}

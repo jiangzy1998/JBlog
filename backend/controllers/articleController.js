@@ -21,7 +21,7 @@ const getAllArticles = async (req, res) => {
     size = 10;
   }
   // 通过 .select() 方法来选择要返回的字段。用空格分隔字段名称。
-  const resultFieds = "title excerpt articleID updatedAt";
+  const resultFieds = "_id title excerpt updatedAt";
   const articles = await Article.find({}).select(resultFieds).sort({updatedAt:-1}).skip(size * ( page - 1 ) ).limit(size);
   res.status(StatusCodes.OK).json(
     {
@@ -34,11 +34,11 @@ const getAllArticles = async (req, res) => {
 // 根据获取文章详情
 const getArticleById = async (req, res) => {
   let { id } = req.params;
-  const articleID = Number.parseInt(id);
-  if(isNaN(articleID)){
-    res.status(StatusCodes.BAD_REQUEST).json({data:"", msg:'参数格式错误！'})
-  }
-  const article = await Article.find({articleID:articleID}).limit(1);
+  // const articleID = Number.parseInt(id);
+  // if(isNaN(articleID)){
+  //   res.status(StatusCodes.BAD_REQUEST).json({data:"", msg:'参数格式错误！'})
+  // }
+  const article = await Article.find({_id:id}).limit(1);
   res.status(StatusCodes.OK).json({data:article})
 }
 

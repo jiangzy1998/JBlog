@@ -14,12 +14,14 @@ const ArtList:React.FC = () => {
   const fetchBlogs = async ( page:number = 1, size:number = 10 ) => {
     const { data } = await fetchAPI(`/article?page=${page}&size=${size}`, 'GET', {});
     if(!!data){
+      data.forEach((item:any) => {
+        item.articleID = item._id
+      });
       setArticles(data);
     }
   }
   
   const paginationChange = (page:number) => {
-    console.log("paginationChange", page)
     fetchBlogs(page);
   }
 
@@ -40,13 +42,18 @@ const ArtList:React.FC = () => {
 
   return (
     <div className="articles">
-      <div >
+      <div>
         { articles.map((item, index) => (
-          <ArtCard key={index} title={item.title} excerpt={item.excerpt} updateAt={item.updateAt} articleID={0}></ArtCard>
+          <ArtCard key={index} title={item.title} excerpt={item.excerpt} updateAt={item.updateAt} articleID={item.articleID}></ArtCard>
         ))}
       </div>
       
-      <Pagination total={5} current={1} onChange={paginationChange}></Pagination>
+      <div>
+        <Pagination total={5} current={1} onChange={paginationChange}></Pagination>
+        <div>
+          <br/>
+        </div>
+      </div>
     </div>
   )
 }
