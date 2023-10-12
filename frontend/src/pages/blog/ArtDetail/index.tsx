@@ -1,7 +1,7 @@
 import { fetchAPI } from "@/utils/apis/fetch";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import "quill/dist/quill.core.css";
+import "./index.less"
 
 const ArtDetail:React.FC = () => {
 
@@ -26,9 +26,28 @@ const ArtDetail:React.FC = () => {
 
   return (
     <section>
-      <Link to='/blog'>Back</Link>
+      {
+        !!article ? (
+          <div className="ql-editor" dangerouslySetInnerHTML={{ __html: article.article }} />
+        ):(
+          <div className="peeek-loading">
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </div>
+        )
+      }
       
-      <div className="ql-editor" dangerouslySetInnerHTML={{ __html: '<p>normal</p><p><strong>bold</strong></p><p><strong><em>line</em></strong></p><p><strong style="color: rgb(230, 0, 0);"><em>red</em></strong></p><h1>h1h1</h1>' }} />
+      
     </section>
     
   )
