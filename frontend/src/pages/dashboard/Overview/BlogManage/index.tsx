@@ -48,15 +48,15 @@ const BlogManage:React.FC = () => {
     if(!editor){ return };
     console.error("getContents",editor.getContents());
     const dirtyHTML = editor.root.innerHTML;
-    // const cleanHTML = DOMPurify.sanitize(dirtyHTML);
-    console.error("html", dirtyHTML);
-    // const param = {
-    //   title: blogTitle,
-    //   excerpt: "null",
-    //   article: dirtyHTML
-    // }
-    // const { data } = await fetchAPI("/article", 'POST', param);
-    // console.log(data);
+    const cleanHTML = DOMPurify.sanitize(dirtyHTML);
+    console.error("html", cleanHTML);
+    const param = {
+      title: blogTitle,
+      excerpt: "null",
+      article: dirtyHTML
+    }
+    const { data } = await fetchAPI("/article", 'POST', param);
+    console.log(data);
   }
 
   const blogTitleChange = (e: ChangeEvent<HTMLInputElement>) => {

@@ -16,7 +16,7 @@ const Home:React.FC = () => {
           <img alt="前往首页" src={logo} width="112" height="112" onClick={() => navigate('/blog')}></img>
         </div>
 
-        <p className="typing">我是阿酱，一名前端开发者。</p>
+        <p className="typing">我是浮生半日，一名前端开发者。</p>
         
       </div>
 
