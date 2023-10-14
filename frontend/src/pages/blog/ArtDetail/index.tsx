@@ -1,6 +1,6 @@
 import { fetchAPI } from "@/utils/apis/fetch";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "./index.less"
 
 const ArtDetail:React.FC = () => {

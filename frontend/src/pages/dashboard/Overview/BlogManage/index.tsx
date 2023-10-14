@@ -25,21 +25,33 @@ const options = {
       [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
       [{ 'font': [] }],
       [{ 'align': [] }],
-    
+
+      ["link", "image", "video"],
       ['clean']                                         // remove formatting button
     ]
   },
-  placeholder: 'Compose an epic...',
+  placeholder: '请输入...',
   theme: 'snow'
 };
 
 const BlogManage:React.FC = () => {
   
-  let editor:Quill | null = null;
+  var editor:Quill | null;
   const [ blogTitle, setBlogTitle ] = useState("无标题");
   useEffect(()=>{
     if(!editor){
       editor = new Quill('#editor', options);
+      editor.clipboard.addMatcher(Node.ELEMENT_NODE, (node, delta) => {
+        // 处理粘贴的内容
+        if (node.tagName && node.tagName.toLowerCase() === 'img') {
+          // 处理粘贴的图片
+          const imageUrl = node.getAttribute('src');
+          // 在这里执行上传图片等操作
+          // 将图片插入到编辑器中
+          console.log(imageUrl);
+        }
+        return delta;
+      })
     }
   }, [])
 
@@ -72,8 +84,8 @@ const BlogManage:React.FC = () => {
           <input value={blogTitle} onChange={blogTitleChange}/>
         </div>
         <div>
-          <button onClick={handleSubmit}>更新</button>
-          {/* <Button type='primary' onClick={handleSubmit}>更新</Button> */}
+          {/* <button onClick={handleSubmit}>更新</button> */}
+          <Button type='primary' onClick={handleSubmit}>更新</Button>
         </div>
         
       </div>
