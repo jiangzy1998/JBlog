@@ -67,15 +67,16 @@ const uploadImage = async (req, res) => {
 }
 
 
-// 富文本编辑器上传 base64 
+// 富文本编辑器中 base64格式图片 上传  
 const uploadImageBase64 = async (req, res) => {
-  if(req.file){
-    const base64Data = req.file.buffer.toString('base64');
-    const fileName = generateRandomHash(12) + '.png';
+  if (!!req.body && !!req.body.image) {
+    const base64Data = req.body.image.replace(/^data:image\/\w+;base64,/, "");;
+    const fileName = generateRandomHash(16) + '.png';
+    const dataBuffer = Buffer.from(base64Data, 'base64');
     // 将Base64数据保存为文件
-    fs.writeFile(process.env.BLOG_IMAGE_PATH + fileName, base64Data, 'base64', (err) => {
+    fs.writeFile(process.env.BLOG_IMAGE_PATH + fileName, dataBuffer, (err) => {
       if (err) {
-        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ data: {}, msg:err })
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR)
       } else {
         // 构建返回数据
         const responseData = {
@@ -85,6 +86,8 @@ const uploadImageBase64 = async (req, res) => {
         res.status(StatusCodes.OK).json({ data: responseData })
       }
     });
+  } else {
+    res.status(StatusCodes.BAD_REQUEST).json({ err: "参数格式错误!" });
   }
 }
 
