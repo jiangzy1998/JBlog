@@ -8,7 +8,7 @@ const {
   createArticle,
 
   uploadImage,
-  uploadImageBase64
+  uploadBase64Image
 } = require("../controllers/articleController")
 
 
@@ -50,7 +50,7 @@ router
 // 用户上传 base64 格式图片
 router
   .route('/upload-image-base64')
-  .post(uploadToMemory.single('image'), uploadImageBase64)
+  .post(uploadToMemory.single('image'), uploadBase64Image)
 
 
 module.exports = router;

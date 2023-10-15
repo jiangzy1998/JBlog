@@ -68,7 +68,7 @@ const uploadImage = async (req, res) => {
 
 
 // 富文本编辑器中 base64格式图片 上传  
-const uploadImageBase64 = async (req, res) => {
+const uploadBase64Image = async (req, res) => {
   if (!!req.body && !!req.body.image) {
     const base64Data = req.body.image.replace(/^data:image\/\w+;base64,/, "");;
     const fileName = generateRandomHash(16) + '.png';
@@ -98,5 +98,5 @@ module.exports = {
   createArticle,
 
   uploadImage,
-  uploadImageBase64
+  uploadBase64Image
 }
