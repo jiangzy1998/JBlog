@@ -63,7 +63,7 @@ const uploadImage = async (req, res) => {
   // 构建返回数据
   const responseData = {
     // 返回文件名
-    fileName: req.file.filename
+    fileName: process.env.HOST_NAME + process.env.PUBLIC_BLOG_IMAGE_PATH + req.file.fileName
   }
   res.status(StatusCodes.OK).json({ data: responseData })
 }
@@ -83,7 +83,7 @@ const uploadBase64Image = async (req, res) => {
         // 构建返回数据
         const responseData = {
           // 返回文件名
-          fileName: fileName
+          fileName: process.env.HOST_NAME + process.env.PUBLIC_BLOG_IMAGE_PATH + fileName
         }
         res.status(StatusCodes.OK).json({ data: responseData })
       }
@@ -116,12 +116,12 @@ const uploadURLImage = async (req, res) => {
         fileStream.close();
         const responseData = {
           // 返回文件名
-          fileName: newFileName
+          fileName: process.env.HOST_NAME + process.env.PUBLIC_BLOG_IMAGE_PATH + newFileName
         }
         res.status(StatusCodes.OK).json({ data: responseData })
       });
     }
-    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({err:err});
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR);
   });
 
   request.on('error', (err) => {
