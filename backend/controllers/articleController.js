@@ -2,6 +2,8 @@ const Article = require("../models/Article");
 const { StatusCodes } = require('http-status-codes');
 const crypto = require('crypto');
 const fs = require('fs');
+const http = require('http');
+const path = require("path");
 
 
 // 新建一篇文章
@@ -91,6 +93,42 @@ const uploadBase64Image = async (req, res) => {
   }
 }
 
+const uploadURLImage = async (req, res) => {
+   // 获取远程图片的URL
+   const imageUrl = req.body.image;
+   // 判断图片类型
+   const imageType =  path.basename(imageUrl).split('.')[path.basename(imageUrl).split('.').length - 1] || "png";
+    // 生成一个新的文件名
+  const newFileName =  generateRandomHash(16) + '.' + imageType;
+  // 本地文件保存路径
+  const filePath = process.env.BLOG_IMAGE_PATH + newFileName;
+
+  // 发起HTTP请求以下载图片
+  const request = http.get(imageUrl, (response) => {
+    if (response.statusCode === 200) {
+      
+      // 创建一个可写流，将远程图片保存到本地
+      const fileStream = fs.createWriteStream(filePath);
+      response.pipe(fileStream);
+
+        // 当下载完成后，关闭可写流
+      response.on('end', () => {
+        fileStream.close();
+        const responseData = {
+          // 返回文件名
+          fileName: newFileName
+        }
+        res.status(StatusCodes.OK).json({ data: responseData })
+      });
+    }
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({err:err});
+  });
+
+  request.on('error', (err) => {
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({err:err});
+  });
+}
+
 
 module.exports = {
   getAllArticles,
@@ -98,5 +136,6 @@ module.exports = {
   createArticle,
 
   uploadImage,
-  uploadBase64Image
+  uploadBase64Image,
+  uploadURLImage
 }
