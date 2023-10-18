@@ -51,7 +51,7 @@ const BlogManage:React.FC = () => {
   var editor:Quill;
   const [ blogTitle, setBlogTitle ] = useState("无标题");
 
-  const handleImageSrc = async (imageSrc:string, index:number, node) => {
+  const handleImageSrc = async (imageSrc:string, index:number, node:HTMLElement) => {
     // 粘贴的image src 为 url
     if(isImageUrl(imageSrc)){
       const newImageSrc = imageSrc.replace('https://', 'http://');

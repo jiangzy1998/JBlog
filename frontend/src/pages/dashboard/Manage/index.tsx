@@ -1,357 +1,49 @@
 import React from 'react';
 import "./index.less"
+import logo from "@/assets/logo.jpg"
 
 const Manage:React.FC = () => {
 	return (
-		<div className="app">
-			<header className="app-header">
-				<div className="app-header-logo">
-					<div className="logo">
-						<span className="logo-icon">
-							<img src="https://assets.codepen.io/285131/almeria-logo.svg" />
-						</span>
-						<h1 className="logo-title">
-							<span>Almeria</span>
-							<span>NeoBank</span>
-						</h1>
-					</div>
-				</div>
-				<div className="app-header-navigation">
-					<div className="tabs">re
-						<a href="#">
-							Overview
-						</a>
-						<a href="#" className="active">
-							Payments
-						</a>
-						<a href="#">
-							Cards
-						</a>
-						<a href="#">
-							Account
-						</a>
-						<a href="#">
-							System
-						</a>
-						<a href="#">
-							Business
-						</a>
-					</div>
-				</div>
-				<div className="app-header-actions">
-					<button className="user-profile">
-						<span>Matheo Peterson</span>
-						<span>
-							<img src="https://assets.codepen.io/285131/almeria-avatar.jpeg" />
-						</span>
-					</button>
-					<div className="app-header-actions-buttons">
-						<button className="icon-button large">
-							<i className="ph-magnifying-glass"></i>
-						</button>
-						<button className="icon-button large">
-							<i className="ph-bell"></i>
-						</button>
-					</div>
-				</div>
-				<div className="app-header-mobile">
-					<button className="icon-button large">
-						<i className="ph-list"></i>
-					</button>
+		<div className='manage'>
+			<div className='sidebar'>
+				<div className='page-name flex-center'>
+					<span>Dashboard</span>
 				</div>
 
-			</header>
-			<div className="app-body">
-				<div className="app-body-navigation">
-					<nav className="navigation">
-						<a href="#">
-							<i className="ph-browsers"></i>
-							<span>Dashboard</span>
-						</a>
-						<a href="#">
-							<i className="ph-check-square"></i>
-							<span>Scheduled</span>
-						</a>
-						<a href="#">
-							<i className="ph-swap"></i>
-							<span>Transfers</span>
-						</a>
-						<a href="#">
-							<i className="ph-file-text"></i>
-							<span>Templates</span>
-						</a>
-						<a href="#">
-							<i className="ph-globe"></i>
-							<span>SWIFT</span>
-						</a>
-						<a href="#">
-							<i className="ph-clipboard-text"></i>
-							<span>Exchange</span>
-						</a>
-					</nav>
-					<footer className="footer">
-						<h1>Almeria<small>©</small></h1>
-						<div>
-							Almeria ©<br />
-							All Rights Reserved 2021
-						</div>
-					</footer>
+				<div className='side-nav'>
+					<div className='menu-item menu-item-selected'>
+						<svg className='menu-icon' viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 19C10.067 19 8.31704 18.2165 7.05029 16.9498L12 12V5C15.866 5 19 8.13401 19 12C19 15.866 15.866 19 12 19Z"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"></path></svg>
+						<span className='menu-name'>Dashboard</span>
+					</div>
+
+					<div className='menu-item'>
+						<svg className='menu-icon' viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M3 5C3 3.34315 4.34315 2 6 2H14C17.866 2 21 5.13401 21 9V19C21 20.6569 19.6569 22 18 22H6C4.34315 22 3 20.6569 3 19V5ZM13 4H6C5.44772 4 5 4.44772 5 5V19C5 19.5523 5.44772 20 6 20H18C18.5523 20 19 19.5523 19 19V9H13V4ZM18.584 7C17.9413 5.52906 16.6113 4.4271 15 4.10002V7H18.584Z"></path></svg>
+						<span className='menu-name'>Article</span>
+					</div>
+
+					<div className='menu-item'>
+						<svg className='menu-icon' viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M13.82 22H10.18C9.71016 22 9.3036 21.673 9.20304 21.214L8.79604 19.33C8.25309 19.0921 7.73827 18.7946 7.26104 18.443L5.42404 19.028C4.97604 19.1709 4.48903 18.9823 4.25404 18.575L2.43004 15.424C2.19763 15.0165 2.2777 14.5025 2.62304 14.185L4.04804 12.885C3.98324 12.2961 3.98324 11.7019 4.04804 11.113L2.62304 9.816C2.27719 9.49837 2.19709 8.98372 2.43004 8.576L4.25004 5.423C4.48503 5.0157 4.97204 4.82714 5.42004 4.97L7.25704 5.555C7.5011 5.37416 7.75517 5.20722 8.01804 5.055C8.27038 4.91269 8.53008 4.78385 8.79604 4.669L9.20404 2.787C9.30411 2.32797 9.71023 2.00049 10.18 2H13.82C14.2899 2.00049 14.696 2.32797 14.796 2.787L15.208 4.67C15.4888 4.79352 15.7623 4.93308 16.027 5.088C16.274 5.23081 16.5127 5.38739 16.742 5.557L18.58 4.972C19.0277 4.82967 19.5142 5.01816 19.749 5.425L21.569 8.578C21.8015 8.98548 21.7214 9.49951 21.376 9.817L19.951 11.117C20.0158 11.7059 20.0158 12.3001 19.951 12.889L21.376 14.189C21.7214 14.5065 21.8015 15.0205 21.569 15.428L19.749 18.581C19.5142 18.9878 19.0277 19.1763 18.58 19.034L16.742 18.449C16.5095 18.6203 16.2678 18.7789 16.018 18.924C15.7559 19.0759 15.4854 19.2131 15.208 19.335L14.796 21.214C14.6956 21.6726 14.2895 21.9996 13.82 22ZM7.62004 16.229L8.44004 16.829C8.62489 16.9652 8.81755 17.0904 9.01704 17.204C9.20474 17.3127 9.39801 17.4115 9.59604 17.5L10.529 17.909L10.986 20H13.016L13.473 17.908L14.406 17.499C14.8133 17.3194 15.1999 17.0961 15.559 16.833L16.38 16.233L18.421 16.883L19.436 15.125L17.853 13.682L17.965 12.67C18.0142 12.2274 18.0142 11.7806 17.965 11.338L17.853 10.326L19.437 8.88L18.421 7.121L16.38 7.771L15.559 7.171C15.1998 6.90671 14.8133 6.68175 14.406 6.5L13.473 6.091L13.016 4H10.986L10.527 6.092L9.59604 6.5C9.39785 6.58704 9.20456 6.68486 9.01704 6.793C8.81878 6.90633 8.62713 7.03086 8.44304 7.166L7.62204 7.766L5.58204 7.116L4.56504 8.88L6.14804 10.321L6.03604 11.334C5.98684 11.7766 5.98684 12.2234 6.03604 12.666L6.14804 13.678L4.56504 15.121L5.58004 16.879L7.62004 16.229ZM11.996 16C9.7869 16 7.99604 14.2091 7.99604 12C7.99604 9.79086 9.7869 8 11.996 8C14.2052 8 15.996 9.79086 15.996 12C15.9933 14.208 14.204 15.9972 11.996 16ZM11.996 10C10.9034 10.0011 10.0139 10.8788 9.99827 11.9713C9.98262 13.0638 10.8466 13.9667 11.9387 13.9991C13.0309 14.0315 13.9469 13.1815 13.996 12.09V12.49V12C13.996 10.8954 13.1006 10 11.996 10Z"></path></svg>
+						<span className='menu-name'>Setting</span>
+					</div>
+
+					<div className='menu-divider'>
+						<span>Myself</span>
+					</div>
+
+					<div className='menu-item'>
+						<svg className='menu-icon' viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19 22H5C3.89543 22 3 21.1046 3 20V6C3 4.89543 3.89543 4 5 4H7V2H9V4H15V2H17V4H19C20.1046 4 21 4.89543 21 6V20C21 21.1046 20.1046 22 19 22ZM5 10V20H19V10H5ZM5 6V8H19V6H5ZM17 14H7V12H17V14Z"></path></svg>
+						<span className='menu-name'>Tasks</span>
+					</div>
 				</div>
-				<div className="app-body-main-content">
-					<section className="service-section">
-						<h2>Service</h2>
-						<div className="service-section-header">
-							<div className="search-field">
-								<i className="ph-magnifying-glass"></i>
-								<input type="text" placeholder="Account number"/>
-							</div>
-							<div className="dropdown-field">
-								<select>
-									<option>Home</option>
-									<option>Work</option>
-								</select>
-								<i className="ph-caret-down"></i>
-							</div>
-							<button className="flat-button">
-								Search
-							</button>
-						</div>
-						<div className="mobile-only">
-							<button className="flat-button">
-								Toggle search
-							</button>
-						</div>
-						<div className="tiles">
-							<article className="tile">
-								<div className="tile-header">
-									<i className="ph-lightning-light"></i>
-									<h3>
-										<span>Electricity</span>
-										<span>UrkEnergo LTD.</span>
-									</h3>
-								</div>
-								<a href="#">
-									<span>Go to service</span>
-									<span className="icon-button">
-										<i className="ph-caret-right-bold"></i>
-									</span>
-								</a>
-							</article>
-							<article className="tile">
-								<div className="tile-header">
-									<i className="ph-fire-simple-light"></i>
-									<h3>
-										<span>Heating Gas</span>
-										<span>Gazprom UA</span>
-									</h3>
-								</div>
-								<a href="#">
-									<span>Go to service</span>
-									<span className="icon-button">
-										<i className="ph-caret-right-bold"></i>
-									</span>
-								</a>
-							</article>
-							<article className="tile">
-								<div className="tile-header">
-									<i className="ph-file-light"></i>
-									<h3>
-										<span>Tax online</span>
-										<span>Kharkov 62 str.</span>
-									</h3>
-								</div>
-								<a href="#">
-									<span>Go to service</span>
-									<span className="icon-button">
-										<i className="ph-caret-right-bold"></i>
-									</span>
-								</a>
-							</article>
-						</div>
-						<div className="service-section-footer">
-							<p>Services are paid according to the current state of the currency and tariff.</p>
-						</div>
-					</section>
-					<section className="transfer-section">
-						<div className="transfer-section-header">
-							<h2>Latest transfers</h2>
-							<div className="filter-options">
-								<p>Filter selected: more than 100 $</p>
-								<button className="icon-button">
-									<i className="ph-funnel"></i>
-								</button>
-								<button className="icon-button">
-									<i className="ph-plus"></i>
-								</button>
-							</div>
-						</div>
-						<div className="transfers">
-							<div className="transfer">
-								<div className="transfer-logo">
-									<img src="https://assets.codepen.io/285131/apple.svg" />
-								</div>
-								<dl className="transfer-details">
-									<div>
-										<dt>Apple Inc.</dt>
-										<dd>Apple ID Payment</dd>
-									</div>
-									<div>
-										<dt>4012</dt>
-										<dd>Last four digits</dd>
-									</div>
-									<div>
-										<dt>28 Oct. 21</dt>
-										<dd>Date payment</dd>
-									</div>
-								</dl>
-								<div className="transfer-number">
-									- $ 550
-								</div>
-							</div>
-							<div className="transfer">
-								<div className="transfer-logo">
-									<img src="https://assets.codepen.io/285131/pinterest.svg" />
-								</div>
-								<dl className="transfer-details">
-									<div>
-										<dt>Pinterest</dt>
-										<dd>2 year subscription</dd>
-									</div>
-									<div>
-										<dt>5214</dt>
-										<dd>Last four digits</dd>
-									</div>
-									<div>
-										<dt>26 Oct. 21</dt>
-										<dd>Date payment</dd>
-									</div>
-								</dl>
-								<div className="transfer-number">
-									- $ 120
-								</div>
-							</div>
-							<div className="transfer">
-								<div className="transfer-logo">
-									<img src="https://assets.codepen.io/285131/warner-bros.svg" />
-								</div>
-								<dl className="transfer-details">
-									<div>
-										<dt>Warner Bros.</dt>
-										<dd>Cinema</dd>
-									</div>
-									<div>
-										<dt>2228</dt>
-										<dd>Last four digits</dd>
-									</div>
-									<div>
-										<dt>22 Oct. 21</dt>
-										<dd>Date payment</dd>
-									</div>
-								</dl>
-								<div className="transfer-number">
-									- $ 70
-								</div>
-							</div>
-						</div>
-					</section>
+
+				<div className='side-userinfo'>
+					<img src={logo} alt='logo'></img>
+					<span>浮生半日</span>
 				</div>
-				<div className="app-body-sidebar">
-					<section className="payment-section">
-						<h2>New Payment</h2>
-						<div className="payment-section-header">
-							<p>Choose a card to transfer money</p>
-							<div>
-								<button className="card-button mastercard">
-									<svg width="2001" height="1237" viewBox="0 0 2001 1237" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<g id="a624784f2834e21c94a1c0c9a58bbbaa">
-											<path id="7869b07bea546aa59a5ee138adbcfd5a" d="M1270.57 1104.15H729.71V132.15H1270.58L1270.57 1104.15Z" fill="currentColor"></path>
-											<path id="b54e3ab4d7044a9f288082bc6b864ae6" d="M764 618.17C764 421 856.32 245.36 1000.08 132.17C891.261 46.3647 756.669 -0.204758 618.09 9.6031e-07C276.72 9.6031e-07 0 276.76 0 618.17C0 959.58 276.72 1236.34 618.09 1236.34C756.672 1236.55 891.268 1189.98 1000.09 1104.17C856.34 991 764 815.35 764 618.17Z" fill="currentColor"></path>
-											<path id="67f94b4d1b83252a6619ed6e0cc0a3a1" d="M2000.25 618.17C2000.25 959.58 1723.53 1236.34 1382.16 1236.34C1243.56 1236.54 1108.95 1189.97 1000.11 1104.17C1143.91 990.98 1236.23 815.35 1236.23 618.17C1236.23 420.99 1143.91 245.36 1000.11 132.17C1108.95 46.3673 1243.56 -0.201169 1382.15 -2.24915e-05C1723.52 -2.24915e-05 2000.24 276.76 2000.24 618.17" fill="currentColor"></path>
-										</g>
-									</svg>
-								</button>
-								<button className="card-button visa active">
-									<svg xmlns="http://www.w3.org/2000/svg" width="2500" height="2500" viewBox="0 0 141.732 141.732">
-										<g fill="currentColor">
-											<path d="M62.935 89.571h-9.733l6.083-37.384h9.734zM45.014 52.187L35.735 77.9l-1.098-5.537.001.002-3.275-16.812s-.396-3.366-4.617-3.366h-15.34l-.18.633s4.691.976 10.181 4.273l8.456 32.479h10.141l15.485-37.385H45.014zM121.569 89.571h8.937l-7.792-37.385h-7.824c-3.613 0-4.493 2.786-4.493 2.786L95.881 89.571h10.146l2.029-5.553h12.373l1.14 5.553zm-10.71-13.224l5.114-13.99 2.877 13.99h-7.991zM96.642 61.177l1.389-8.028s-4.286-1.63-8.754-1.63c-4.83 0-16.3 2.111-16.3 12.376 0 9.658 13.462 9.778 13.462 14.851s-12.075 4.164-16.06.965l-1.447 8.394s4.346 2.111 10.986 2.111c6.642 0 16.662-3.439 16.662-12.799 0-9.72-13.583-10.625-13.583-14.851.001-4.227 9.48-3.684 13.645-1.389z" />
-										</g>
-										<path d="M34.638 72.364l-3.275-16.812s-.396-3.366-4.617-3.366h-15.34l-.18.633s7.373 1.528 14.445 7.253c6.762 5.472 8.967 12.292 8.967 12.292z" fill="currentColor" />
-										<path fill="none" d="M0 0h141.732v141.732H0z" />
-									</svg>
-								</button>
-							</div>
-						</div>
-						<div className="payments">
-							<div className="payment">
-								<div className="card green">
-									<span>01/22</span>
-									<span>
-										•••• 4012
-									</span>
-								</div>
-								<div className="payment-details">
-									<h3>Internet</h3>
-									<div>
-										<span>$ 2,110</span>
-										<button className="icon-button">
-											<i className="ph-caret-right-bold"></i>
-										</button>
-									</div>
-								</div>
-							</div>
-							<div className="payment">
-								<div className="card olive">
-									<span>12/23</span>
-									<span>
-										•••• 2228
-									</span>
-								</div>
-								<div className="payment-details">
-									<h3>Universal</h3>
-									<div>
-										<span>$ 5,621</span>
-										<button className="icon-button">
-											<i className="ph-caret-right-bold"></i>
-										</button>
-									</div>
-								</div>
-							</div>
-							<div className="payment">
-								<div className="card gray">
-									<span>03/22</span>
-									<span>
-										•••• 5214
-									</span>
-								</div>
-								<div className="payment-details">
-									<h3>Gold</h3>
-									<div>
-										<span>$ 3,473</span>
-										<button className="icon-button">
-											<i className="ph-caret-right-bold"></i>
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div className="faq">
-							<p>Most frequently asked questions</p>
-							<div>
-								<label>Question</label>
-								<input type="text" placeholder="Type here"/>
-							</div>
-						</div>
-						<div className="payment-section-footer">
-							<button className="save-button">
-								Save
-							</button>
-							<button className="settings-button">
-								<i className="ph-gear"></i>
-								<span>More settings</span>
-							</button>
-						</div>
-					</section>
-				</div>
+			</div>
+
+			<div className='dashboard'>
+
 			</div>
 		</div>
 	)
