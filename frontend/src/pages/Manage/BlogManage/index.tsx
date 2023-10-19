@@ -34,21 +34,52 @@ const options = {
   theme: 'snow'
 };
 
+// 判断是否是URL
+const isImageUrl = (str:string) => {
+  return /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/.test(str);
+}
+
+// 判断是否是Base64编码的图片数据
+const isBase64Image = (str:string) =>{
+  return /^data:image\/(png|jpg|jpeg|gif|webp);base64,/.test(str);
+}
+
+
+
 const BlogManage:React.FC = () => {
   
-  var editor:Quill | null;
+  var editor:Quill;
   const [ blogTitle, setBlogTitle ] = useState("无标题");
+
+  const handleImageSrc = async (imageSrc:string, index:number, node:HTMLElement) => {
+    // 粘贴的image src 为 url
+    if(isImageUrl(imageSrc)){
+      const newImageSrc = imageSrc.replace('https://', 'http://');
+     const { data } = await fetchAPI("/article/upload-image-url", 'POST', {image:newImageSrc});
+     if(!!data.fileName){
+       editor.insertEmbed(index, 'image', data.fileName);
+     }
+    }
+    // 粘贴的image src 为 base64
+    if(isBase64Image(imageSrc)){
+     const { data } = await fetchAPI("/article/upload-image-base64", 'POST', {image:imageSrc});
+     if(!!data.fileName){
+      editor.insertEmbed(index, 'image', data.fileName);
+     }
+    }
+   
+ }
+
   useEffect(()=>{
     if(!editor){
       editor = new Quill('#editor', options);
       editor.clipboard.addMatcher(Node.ELEMENT_NODE, (node, delta) => {
         // 处理粘贴的内容
         if (node.tagName && node.tagName.toLowerCase() === 'img') {
+          const range = editor.getSelection();
           // 处理粘贴的图片
-          const imageUrl = node.getAttribute('src');
-          // 在这里执行上传图片等操作
-          // 将图片插入到编辑器中
-          console.log(imageUrl);
+          const imageSrc = node.getAttribute('src');
+          handleImageSrc(imageSrc, range?.index || 0, node);
         }
         return delta;
       })
