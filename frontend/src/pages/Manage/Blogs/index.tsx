@@ -1,4 +1,5 @@
 import Quill from 'quill';
+import Delta from 'quill-delta';
 import DOMPurify from 'dompurify';
 import { ChangeEvent, useEffect, useState } from 'react';
 import "quill/dist/quill.snow.css";
@@ -79,6 +80,7 @@ const BlogManage: React.FC = () => {
           // 处理粘贴的图片
           const imageSrc = node.getAttribute('src');
           handleImageSrc(imageSrc, range?.index || 0, node);
+          return new Delta();
         }
         return delta;
       })
