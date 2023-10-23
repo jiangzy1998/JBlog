@@ -3,7 +3,7 @@ import "./index.less"
 import logo from "@/assets/logo.jpg"
 import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import Dashboard from './Dashboard';
-import BlogManage from './Blogs';
+import BlogManage from './Blogs/BlogManage';
 import Payment from './Payment';
 
 const Manage:React.FC = () => {
@@ -68,7 +68,7 @@ const Manage:React.FC = () => {
 			<div className='manage-content'>
 				<Routes>
 					<Route path='/dashboard' element={<Dashboard />}></Route>
-					<Route path='/article' element={<BlogManage />}></Route>
+					<Route path='/blog-manage' element={<BlogManage />}></Route>
 					<Route path='/payment' element={<Payment />}></Route>
 					<Route path='*' element={<Navigate to='/dashboard' />} />
 				</Routes>

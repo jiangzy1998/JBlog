@@ -46,7 +46,7 @@ const isBase64Image = (str: string) => {
 }
 
 
-const BlogManage: React.FC = () => {
+const BlogEdit: React.FC = () => {
 
   var editor: Quill;
   const [blogTitle, setBlogTitle] = useState("无标题");
@@ -128,4 +128,4 @@ const BlogManage: React.FC = () => {
   )
 }
 
-export default BlogManage;
+export default BlogEdit;
