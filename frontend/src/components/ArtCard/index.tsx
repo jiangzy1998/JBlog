@@ -5,7 +5,8 @@ export interface ArtCardProps {
   title:string,
   excerpt:string,
   articleID:number,
-  updateAt:Date
+  updateAt:Date,
+  createAt?:Date
 }
 
 const ArtCard:React.FC<ArtCardProps> = ({
